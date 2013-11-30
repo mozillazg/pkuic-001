@@ -8,21 +8,14 @@ int main() {
     for (int i=0; i<n; i++) {
         cin >> a[i];
     }
-    for (int i=0; i<n; i++) {
-        int x = m + n;
-        if (m + n < n) {
-            int y = a[i];
-            a[i] = a[i+1];
-            a
-        }
+
+    for (int i=n-m; i<n; i++) {
+        cout << a[i] << " ";
     }
-    for (int i=0; i<n; i++) {
-        if (i == n -1) {
-        cout << a[i] << endl;
-        } else {
-            cout << a[i] << " ";
-        }
+    for (int i=0; i<n-m; i++) {
+        cout << a[i] << " ";
     }
+    cout << endl;
 
     return 0;
 }
