@@ -1,27 +1,27 @@
 #include <iostream>
-#include <cstring>
 using namespace std;
 
 int main() {
-    char str[510];
-    string s;
-    string maxs = "";
-    int m = 0, n = 0;
-    int i = 0, max = 0;
-
-    cin.get(str, 510);
-    s = string(str);
-
-    for (i=1; str[i]!='\0'; i++) {
-        if (str[i] == ' ' or str[i] == '.') {
-            string tmp = s.substr(m, i-m);
-            if (tmp.size() > maxs.size()) {
-                maxs = tmp;
+    int N = 0, K = 0;
+    while (cin >> N >> K) {
+        int M = 1;
+        float n = 200, m = 0;
+        int total = N;
+        while (true) {
+            int tmp = 0;
+            m = total / n;
+            if (m >= 1 && M < 21) {
+                    cout << M << endl;
+                    break;
+            } else if (M > 20) {
+                cout << "Impossible" << endl;
+                break;
             }
-            m = i + 1;
+            n += n * K/100;
+            total += N;
+            M++;
         }
     }
-    cout << maxs << endl;
 
     return 0;
 }

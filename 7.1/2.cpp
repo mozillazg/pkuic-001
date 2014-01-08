@@ -1,30 +1,30 @@
 #include <iostream>
+#include <cstring>
 using namespace std;
 
 int main() {
-    int ax = 0, bx = 0, cx = 0, dx = 0;
+    char str_a[80], str_b[80];
+    cin.getline(str_a, 80);
+    cin.getline(str_b, 80);
 
-    for (int p=1; p<5; p++){
-        for(int d=1; d<5; d++){
-            for(int t=1; t<5; t++){
-                for(int h=1; h<5; h++){
-                    if (p==d || p==t || p==h || d==t || d==h || t==h) {
-                        continue;
-                    }
-                    ax = (d == 4) + (h == 1) + (p == 3);
-                    bx = (h == 4) + (d == 1) + (p == 2) + (t == 3);
-                    cx = (h == 1) + (d == 3);
-                    dx = (p == 4) + (t == 1) + (h == 2) + (d == 3);
-                    if (ax == 1 && bx == 1 && cx == 1 && dx == 1) {
-                        cout << p << endl;
-                        cout << d << endl;
-                        cout << t << endl;
-                        cout << h << endl;
-                        return 0;
-                    }
-                }
-            }
+    for (int i=0; str_a[i] != '\0'; i++) {
+        if (str_a[i] >= 'A' && str_a[i] <= 'Z') {
+            str_a[i] = str_a[i] + 32;
         }
     }
+    for (int i=0; str_b[i] != '\0'; i++) {
+        if (str_b[i] >= 'A' && str_b[i] <= 'Z') {
+            str_b[i] = str_b[i] + 32;
+        }
+    }
+    int result = strcmp(str_a, str_b);
+    if (result == 0) {
+        cout << '=' << endl;
+    } else if (result > 0) {
+        cout << '>' << endl;
+    } else {
+        cout << '<' << endl;
+    }
 
+    return 0;
 }

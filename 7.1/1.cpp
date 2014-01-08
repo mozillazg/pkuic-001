@@ -2,21 +2,32 @@
 using namespace std;
 
 int main() {
-    int n = 0;
-    cin >> n;
-    int x[n];
-    bool has = false;
-    for (int i=0; i<n; i++) {
-        cin >> x[i];
-        if (x[i] == i) {
-            cout << i << endl;
-            has = true;
-            break;
+    char str[80];
+    int a = 0, e = 0, i = 0, o = 0, u = 0;
+    cin.getline(str, 80);
+    for (int x=0; x < 80; x++) {
+        switch (str[x]) {
+            case '\0':
+                break;
+            case 'a':
+                a++;
+                break;
+            case 'e':
+                e++;
+                break;
+            case 'i':
+                i++;
+                break;
+            case 'o':
+                o++;
+                break;
+            case 'u':
+                u++;
+                break;
         }
     }
-    if (!has) {
-        cout << "N" << endl;
-    }
+
+    cout << a << " " << e << " " << i << " " << o << " " << u << " ";
 
     return 0;
 }

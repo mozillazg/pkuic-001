@@ -1,28 +1,47 @@
-#include <iostream>
+/*
+=====
+第3题：3:最高的分数
+=====
+
+总时间限制:
+    1000ms
+内存限制:
+    65536kB
+
+描述
+
+    孙老师 讲授的《计算概论》这门课期中考试刚刚结束，他想知道考试中取得的最高分数。因为人数比较多，他觉得这件事情交给计算机来做比较方便。你能帮孙老师解决这个问题吗？
+输入
+    输入为二行,第一行为整数n（1 <= n < 100），表示参加这次考试的人数.第二行是这n个学生的成绩
+输出
+    输出一行，即最高的成绩
+样例输入
+
+    5
+    85 78 90 99 60
+
+样例输出
+
+    99
+
+提示
+    不用数组和使用数组均可实现
+*/
+
+#include<iostream>
 using namespace std;
 
 int main() {
-    int N = 0, K = 0;
-    cin >> N >> K;
-    int *array = new int[N];
+    int n = 0, i = 0, m = 0, max = 0;
 
-    for (int i = 0; i < N; i++) {
-        cin >> array[i];
-    }
-
-    for (int i = 0; i < N; i++) {
-        int Ngreater = 0;
-        for (int j = 0; j < N; j++) {
-            if (array[j] > array[i]) {
-                Ngreater++;
-            }
-        }
-        if (Ngreater == K - 1) {
-            cout << array[i] << endl;
-            return 0;
+    cin >> n;
+    for (i = 0; i < n; i++) {
+        cin >> m;
+        if (m > max) {
+            max = m;
         }
     }
-    delete[] array;
+    cout << max;
 
     return 0;
 }

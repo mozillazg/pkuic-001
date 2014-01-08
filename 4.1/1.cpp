@@ -1,31 +1,50 @@
-#include <iostream>
-#include <cstring>
-#include <iomanip>
+/*
+=====
+第1题：1:苹果和虫子
+=====
+
+总时间限制:
+    1000ms
+内存限制:
+    65536kB
+
+描述
+
+    你买了一箱n个苹果，很不幸的是买完时箱子里混进了一条虫子。虫子每x小时能吃掉一个苹果，假设虫子在吃完一个苹果之前不会吃另一个，那么经过y小时你还有多少个完整的苹果？
+输入
+    输入仅一行，包括n，x和y（均为整数）。
+输出
+    输出也仅一行，剩下的苹果个数
+样例输入
+
+    10 4 9
+
+样例输出
+
+    7
+
+提示
+    注意：是要求完整的苹果数。
+*/
+
+#include<iostream>
 using namespace std;
 
 int main() {
-    int n;
-    cin >> n;
-    int num1 = 0, num2 = 0, num3 = 0, num4 = 0;
-    for (int i = 0; i < n; i++) {
-        int tmpage;
-        cin >> tmpage;
-        if (tmpage >= 1 && tmpage <= 18) {
-            num1++;
-        } else if (tmpage >= 19 && tmpage <= 35) {
-            num2++;
-        } else if (tmpage >=36 && tmpage <= 60) {
-            num3++;
-        } else if (tmpage > 60) {
-            num4++;
-        }
-    }
+    // a: 整除的结果，b: 余数, c: 剩余
+    int n = 0, x = 0, y = 0, a = 0, b = 0, c = 0;
+    cin >> n >> x >> y;
 
-    double denominator = (num1 + num2 + num3 + num4) / 100.0;
-    cout << fixed << setprecision(2) << "1-18: " << num1 / denominator << "%" << endl
-         << "19-35: " << num2 / denominator << "%" << endl
-         << "36-60: " << num3 / denominator << "%" << endl
-         << "60-: " << num4 / denominator << "%" << endl;
+    a = y / x;
+    b = y % x;
+    if (b != 0) {
+        a++;
+    }
+    c = n - a;
+    if (c < 0) {
+        c = 0;
+    }
+    cout << c;
 
     return 0;
 }

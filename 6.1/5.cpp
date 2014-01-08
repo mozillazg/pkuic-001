@@ -2,30 +2,17 @@
 using namespace std;
 
 int main() {
-    int n = 0;
-    int x = 0;
+    int n = 0, m = 0;
+    int x = 0, y = 0;
     cin >> n;
-    int arr[n][n];
-
-    for (int i=0; i<n; i++) {
-        for (int j=0; j<n; j++) {
-            cin >> arr[i][j];
+    for (int i=10; i<=n; i++) {
+        x = i / 10;
+        y = i % 10;
+        m = x + y;
+        if (i % m == 0) {
+            cout << i << endl;
         }
     }
-
-    for (int i=1; i<n-1; i++) {
-        for (int j=1; j<n-1; j++) {
-            int tmp = arr[i][j] + 49;
-            if ((tmp < arr[i-1][j]) &&
-                (tmp < arr[i+1][j]) &&
-                (tmp < arr[i][j-1]) &&
-                (tmp < arr[i][j+1])) {
-                x++;
-            }
-        }
-    }
-
-    cout << x << endl;
 
     return 0;
 }

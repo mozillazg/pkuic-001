@@ -2,20 +2,28 @@
 using namespace std;
 
 int main() {
-    int n = 0, m = 0;
-    cin >> n >> m;
-    int a[n];
-    for (int i=0; i<n; i++) {
-        cin >> a[i];
-    }
+    int best = 0;
+    for (best = 1; best <= 4; best++) {
+        bool a = (best == 2);
+        bool b = (best == 4);
+        bool c = !(best == 3);
+        bool d = !b;
 
-    for (int i=n-m; i<n; i++) {
-        cout << a[i] << " ";
+        if (a + b + c + d != 1) {
+            continue;
+        }
+
+        cout << best << endl;
+        if (a == 1) {
+            cout << "A" << endl;
+        } else if (b == 1) {
+            cout << "B" << endl;
+        } else if (c == 1) {
+            cout << "C" << endl;
+        } else {
+            cout << "D" << endl;
+        }
     }
-    for (int i=0; i<n-m; i++) {
-        cout << a[i] << " ";
-    }
-    cout << endl;
 
     return 0;
 }
