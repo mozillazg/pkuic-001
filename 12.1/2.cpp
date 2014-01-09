@@ -1,6 +1,7 @@
 /*
+
 =====
-第2题：2:二维数组右上左下遍历
+第2题：2:配对碱基链
 =====
 
 总时间限制:
@@ -10,58 +11,58 @@
 
 描述
 
-    给定一个row行col列的整数数组array，要求从array[0][0]元素开始，按从左上到右下的对角线顺序遍历整个数组。
-
-    [http://media.openjudge.cn/images/upload/1381483836.gif]
+    脱氧核糖核酸（DNA）由两条互补的碱基链以双螺旋的方式结合而成。而构成DNA的碱基共有4种，分别为腺瞟呤（A）、鸟嘌呤（G）、胸腺嘧啶（T）和胞 嘧啶（C）。我们知道，在两条互补碱基链的对应位置上，腺瞟呤总是和胸腺嘧啶配对，鸟嘌呤总是和胞嘧啶配对。你的任务就是根据一条单链上的碱基序列，给出 对应的互补链上的碱基序列。
 输入
-    输入的第一行上有两个整数，依次为row和col。
-    余下有row行，每行包含col个整数，构成一个二维整数数组。
-    （注：输入的row和col保证0 < row < 100, 0 < col < 100）
+    第一行是一个正整数n，表明共有n条要求解的碱基链。
+    以下共有n行，每行用一个字符串表示一条碱基链。这个字符串只含有大写字母A、T、G、C，分别表示腺瞟呤、胸腺嘧啶、鸟嘌呤和胞嘧啶。每条碱基链的长度都不超过255。
 输出
-    按遍历顺序输出每个整数。每个整数占一行。
+    共有n行，每行为一个只含有大写字母A、T、G、C的字符串。分别为与输入的各碱基链互补的碱基链。
 样例输入
 
-    3 4
-    1 2  4  7
-    3 5  8 10
-    6 9 11 12
+    5
+    ATATGGATGGTGTTTGGCTCTG
+    TCTCCGGTTGATT
+    ATATCTTGCGCTCTTGATTCGCATATTCT
+    GCGTTTCGTTGCAA
+    TTAACGCACAACCTAGACTT
 
 样例输出
 
-    1
-    2
-    3
-    4
-    5
-    6
-    7
-    8
-    9
-    10
-    11
-    12
+    TATACCTACCACAAACCGAGAC
+    AGAGGCCAACTAA
+    TATAGAACGCGAGAACTAAGCGTATAAGA
+    CGCAAAGCAACGTT
+    AATTGCGTGTTGGATCTGAA
 */
 
 #include <iostream>
 using namespace std;
 
 int main() {
-    int row = 0, col = 0;
-    cin >> row >> col;
-    int array[row][col];
+    int n = 0;
+    char arr[1000][256];
 
-    for (int m=0; m<row; m++) {
-        for (int n=0; n<col; n++) {
-            cin >> array[m][n];
-        }
-    }
-
-    for (int p=0; p<row+col-1; p++) {
-        for (int i=0; i<=p; i++) {
-            if (i < row && p -i < col) {
-                cout << array[i][p-i] << endl;
+    cin >> n;
+    cin.get();
+    for (int i=0; i<n; i++) {
+        cin.getline(arr[i], 256);
+        for (int j=0; arr[i][j]!='\0'; j++) {
+            switch (arr[i][j]) {
+            case 'A':
+                cout << 'T';
+                break;
+            case 'T':
+                cout << 'A';
+                break;
+            case 'G':
+                cout << 'C';
+                break;
+            case 'C':
+                cout << 'G';
+                break;
             }
         }
+        cout << '\n';
     }
 
     return 0;
